@@ -18,6 +18,36 @@ body {
   overflow-x: hidden;
 }
 
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 30px 100px;
+  z-index: 99;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header ul li {
+  list-style: none;
+  margin-left: 20px;
+}
+
+header ul li a {
+  text-decoration: none;
+  padding: 15px;
+  color: #ffff;
+  border-radius: 20px;
+}
+
 
 section {
   position: relative;
