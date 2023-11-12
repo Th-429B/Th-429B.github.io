@@ -272,3 +272,23 @@ section img#clouds {
   height: 250px;
   size: cover;
 }
+
+.skills-icons-list li {
+  list-style: none;
+  margin: 20px;
+  padding: 20px 0;
+  display: inline-block;
+  text-align: center;
+}
+
+.icon-text {
+  display: block;
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: none;
+  padding: 0.5rem;
+}
+
+.skills-icons-list li img:hover {
+  transform: scale(1.3);
+}
