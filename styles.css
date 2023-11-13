@@ -147,6 +147,9 @@ section img#clouds {
   position: relative;
   padding: 1em;
   background: #54175f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sec_alt h2 {
@@ -257,7 +260,7 @@ section img#clouds {
 }
 
 .project-header {
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .card {
@@ -393,6 +396,10 @@ section img#clouds {
   #intro {
     right: -350px;
     font-size: 7.5vw;
+  }
+  .skills-icons-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
