@@ -39,6 +39,7 @@ header ul {
 header ul li {
   list-style: none;
   margin-left: 20px;
+  display: inline-block;
 }
 
 header ul li a {
@@ -366,18 +367,19 @@ section img#clouds {
   .nav-bar {
     flex-direction: column;
     align-items: flex-start;
-    height: 100%;
+    height: 100%; 
   }
-  ul {
+
+  .navbar-links ul {
     flex-direction: column;
   }
-  ul li {
+  .navbar-links ul li {
     text-align: center;
   }
-  ul li a {
+  .navbar-links ul li a {
     padding: 0.5rem 1rem;
   }
-  ul .active {
+  .navbar-links ul .active {
     display: flex;
   }
 }
