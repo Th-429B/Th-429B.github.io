@@ -53,34 +53,59 @@ body {
 }
 
 header {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
-  padding: 30px 100px;
+  padding: 1rem clamp(1.25rem, 6vw, 100px);
+  background: var(--surface-1);
   z-index: 99;
+  transition: background 0.4s ease;
 }
 
-header ul {
+.header-icons {
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 0.6rem;
 }
 
-header ul li {
-  list-style: none;
-  margin-left: 20px;
-  display: inline-block;
+.link-dock {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  background: var(--surface-3);
+  border-radius: 999px;
+  padding: 0.3rem;
+  box-shadow: inset 0 0 0 1px var(--toggle-outline);
+  transition: background 0.4s ease;
 }
 
-header ul li a {
-  text-decoration: none;
-  padding: 15px;
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
   color: var(--text);
-  border-radius: 20px;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.link-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.link-btn:hover {
+  background: var(--sun);
+  color: var(--bg-deep);
+}
+
+.link-btn:focus-visible {
+  outline: 2px solid var(--sun);
+  outline-offset: 2px;
 }
 
 .theme-toggle {
@@ -143,100 +168,18 @@ header ul li a {
 }
 
 
-section {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-  width: 100%;
-  height: 100vh;
-  padding: 100px;
-  padding-bottom: 12vh;
-}
-
-/* section::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to top, #1c0522, transparent);
-  z-index: 999999;
-} */
-
-section::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to top, var(--surface-1), transparent);
-  z-index: 999999;
-}
-
 #about {
   background: var(--surface-1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 3rem;
   transition: background 0.4s ease;
 }
 
 #about > * {
-  display: block; 
-  margin: 10px 0; 
-}
-
-/* #about::after{
-  content: "";
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to bottom, #1c0522, #bc1de4);
-  z-index: 999999;
-} */
-
-/*parallax scroll*/
-
-section img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-}
-
-section img#moon {
-  object-fit: contain;
-  object-position: 50% 30%;
-  mix-blend-mode: screen;
-  transition: opacity 0.4s ease;
-}
-
-section img#stars {
-  transition: opacity 0.4s ease;
-}
-
-section img#clouds {
-  z-index: 10;
-}
-
-:root[data-theme="light"] section img#moon,
-:root[data-theme="light"] section img#stars {
-  opacity: 0;
-}
-
-#intro {
-  position: relative;
-  color: var(--text);
-  font-size: clamp(2.25rem, 6vw, 4.5rem);
-  z-index: 11;
-  text-align: center;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: 10px 0;
 }
 
 .sec {
@@ -495,61 +438,133 @@ section img#clouds {
   font-size: 20px;
 }
 
-.project-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  align-content: center;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  margin-bottom: 3rem;
-}
-
 .project-header {
   padding: 0.5em;
 }
 
-.card {
-  display: inline-block;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  padding: 25px;
-  margin: 20px 20px;
-  border-radius: 5%;
-  background-color: var(--card-bg);
-  box-shadow: inset 0 0 0 1px var(--toggle-outline);
-  transition: background 0.4s ease;
+.project-list {
+  width: min(760px, 100%);
+  margin: 1.5rem auto 2.5rem;
 }
 
-.card .project-icons {
-  display: inline-block;
-  height: 30px;
-  margin: 5px;
-  margin-bottom: -15px;
+.project-row {
+  border-bottom: 1px solid var(--toggle-outline);
 }
 
-.card h4 {
-  padding-bottom: 10px;
-  font-weight: bold;
-  color: var(--card-text);
+.project-row:first-child {
+  border-top: 1px solid var(--toggle-outline);
 }
 
-.card-text {
-  font-size: 1rem;
-  font-weight: 300;
-  text-transform: none;
-  color: var(--card-text);
+.project-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1rem 0.25rem;
+  cursor: pointer;
+  text-align: left;
 }
 
-.project-img {
-  border-radius: 2%;
-  max-width: 400px;
-  height: 250px;
-  size: cover;
+.project-index {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  margin-right: 0.75rem;
+}
+
+.project-chev {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: var(--text-dim);
+  transition: transform 0.25s ease;
+}
+
+.project-row[data-open="true"] .project-chev {
+  transform: rotate(90deg);
+}
+
+.project-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.project-row[data-open="true"] .project-body {
+  grid-template-rows: 1fr;
+}
+
+.project-body-inner {
+  overflow: hidden;
+}
+
+.project-content {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 0 0.25rem 1.5rem;
+}
+
+.project-thumb {
+  width: 180px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  flex: none;
+}
+
+.project-copy p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.project-meta {
+  margin-top: 0.35rem;
+  font-style: italic;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  color: var(--sun);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.project-link svg {
+  width: 15px;
+  height: 15px;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-body {
+    transition: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .project-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .project-thumb {
+    width: 100%;
+  }
 }
 
 .skills-icons-list li {
@@ -604,18 +619,15 @@ section img#clouds {
 
 /* email/linkedin/github icons ship as white-fill SVGs, resume.svg ships
    black-fill; invert whichever set doesn't suit the active theme so both
-   stay legible against the header/footer surface */
-:root:not([data-theme="light"]) .header-icons img[src$="resume.svg"],
+   stay legible against the footer surface */
 :root:not([data-theme="light"]) .footer-icon-list img[src$="resume.svg"] {
   filter: invert(1);
 }
 
-:root[data-theme="light"] .header-icons img:not([src$="resume.svg"]),
 :root[data-theme="light"] .footer-icon-list img:not([src$="resume.svg"]) {
   filter: invert(1);
 }
 
-.header-icons img,
 .footer-icon-list img {
   transition: filter 0.3s ease;
 }

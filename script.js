@@ -51,3 +51,12 @@ if (timeline && milestones.length) {
 
   updateTimelineProgress();
 }
+
+document.querySelectorAll(".project-trigger").forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    const row = trigger.closest(".project-row");
+    const isOpen = row.dataset.open === "true";
+    row.dataset.open = isOpen ? "false" : "true";
+    trigger.setAttribute("aria-expanded", String(!isOpen));
+  });
+});
