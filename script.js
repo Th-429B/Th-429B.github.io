@@ -19,3 +19,12 @@ const navbarLinks = document.getElementsByClassName("navbar-links")[0];
 toggleButton.addEventListener("click", () => {
     navbarLinks.classList.toggle("active");
 });
+
+const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("click", () => {
+  const root = document.documentElement;
+  const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+});

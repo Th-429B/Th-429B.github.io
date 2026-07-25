@@ -6,13 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teng Hon</title>
     <link rel="shortcut icon" href="icons/wave.ico" type="image/x-icon" />
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
 
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="icon-sun" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="19" fill="currentColor"/>
+          <g stroke="currentColor" stroke-width="7" stroke-linecap="round">
+            <line x1="50" y1="8" x2="50" y2="21"/>
+            <line x1="50" y1="79" x2="50" y2="92"/>
+            <line x1="8" y1="50" x2="21" y2="50"/>
+            <line x1="79" y1="50" x2="92" y2="50"/>
+            <line x1="20" y1="20" x2="29" y2="29"/>
+            <line x1="71" y1="71" x2="80" y2="80"/>
+            <line x1="20" y1="80" x2="29" y2="71"/>
+            <line x1="71" y1="29" x2="80" y2="20"/>
+          </g>
+        </symbol>
+        <symbol id="icon-moon" viewBox="0 0 100 100">
+          <path d="M87.5,53.29 A37.5,37.5 0 1,1 46.71,12.5 A29.17,29.17 0 0,0 87.5,53.29 Z" fill="currentColor"/>
+          <circle cx="66" cy="50" r="3.4" fill="currentColor" opacity="0.35"/>
+          <circle cx="70" cy="64" r="2.4" fill="currentColor" opacity="0.35"/>
+          <circle cx="56" cy="66" r="2.8" fill="currentColor" opacity="0.35"/>
+        </symbol>
+      </defs>
+    </svg>
+
     <header class="header">
       <ul class="header-icons">
-        <li class="nav-icons">          
+        <li>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="ico-sun" aria-hidden="true"><use href="#icon-sun"/></svg>
+            <svg class="ico-moon" aria-hidden="true"><use href="#icon-moon"/></svg>
+          </button>
+        </li>
+        <li class="nav-icons">
           <a href="mailto:tenghonlau@gmail.com" target="_blank" rel="noreferrer noopener">
           <img src="icons/email.svg"/></a>
         </li>
