@@ -1,18 +1,3 @@
-let stars = document.getElementById("stars");
-let moon = document.getElementById("moon");
-let intro = document.getElementById("intro");
-
-window.addEventListener("scroll", function() {
-
-  let value = window.scrollY;
-
-  stars.style.left = value * 0.25 + "px";
-  moon.style.top = value * 1.05 + "px";
-  intro.style.marginRight = value * 4 + "px";
-  intro.style.marginTop = value * 1.5 + "px";
-
-});
-
 const toggleButton = document.getElementsByClassName("toggle-button")[0];
 const navbarLinks = document.getElementsByClassName("navbar-links")[0];
 
@@ -28,3 +13,41 @@ themeToggle.addEventListener("click", () => {
   root.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
 });
+
+const timeline = document.querySelector(".timeline");
+const milestones = document.querySelectorAll(".milestone");
+
+if (timeline && milestones.length) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  milestones.forEach((milestone) => revealObserver.observe(milestone));
+
+  let ticking = false;
+
+  const updateTimelineProgress = () => {
+    const rect = timeline.getBoundingClientRect();
+    const midpoint = window.innerHeight * 0.5;
+    const visible = Math.min(Math.max(midpoint - rect.top, 0), rect.height);
+    const percent = rect.height ? (visible / rect.height) * 100 : 0;
+    timeline.style.setProperty("--tl-progress", percent + "%");
+    ticking = false;
+  };
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateTimelineProgress);
+      ticking = true;
+    }
+  });
+
+  updateTimelineProgress();
+}
