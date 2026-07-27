@@ -1,56 +1,18 @@
-const toggleButton = document.getElementsByClassName("toggle-button")[0];
-const navbarLinks = document.getElementsByClassName("navbar-links")[0];
-
-toggleButton.addEventListener("click", () => {
-    navbarLinks.classList.toggle("active");
-});
-
 const themeToggle = document.getElementById("theme-toggle");
+const root = document.documentElement;
+
+const syncTogglePressed = () => {
+  themeToggle.setAttribute("aria-pressed", String(root.getAttribute("data-theme") !== "light"));
+};
 
 themeToggle.addEventListener("click", () => {
-  const root = document.documentElement;
   const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
   root.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
+  syncTogglePressed();
 });
 
-const timeline = document.querySelector(".timeline");
-const milestones = document.querySelectorAll(".milestone");
-
-if (timeline && milestones.length) {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  milestones.forEach((milestone) => revealObserver.observe(milestone));
-
-  let ticking = false;
-
-  const updateTimelineProgress = () => {
-    const rect = timeline.getBoundingClientRect();
-    const midpoint = window.innerHeight * 0.5;
-    const visible = Math.min(Math.max(midpoint - rect.top, 0), rect.height);
-    const percent = rect.height ? (visible / rect.height) * 100 : 0;
-    timeline.style.setProperty("--tl-progress", percent + "%");
-    ticking = false;
-  };
-
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(updateTimelineProgress);
-      ticking = true;
-    }
-  });
-
-  updateTimelineProgress();
-}
+syncTogglePressed();
 
 document.querySelectorAll(".project-trigger").forEach((trigger) => {
   trigger.addEventListener("click", () => {
@@ -60,3 +22,17 @@ document.querySelectorAll(".project-trigger").forEach((trigger) => {
     trigger.setAttribute("aria-expanded", String(!isOpen));
   });
 });
+
+// The output line ships fully rendered in the HTML so it reads fine without
+// JS or with reduced motion; the typing effect just replays it on load.
+const typed = document.getElementById("typed");
+if (typed && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const full = typed.textContent;
+  typed.textContent = "";
+  let i = 0;
+  const tick = () => {
+    typed.textContent = full.slice(0, ++i);
+    if (i < full.length) setTimeout(tick, 28);
+  };
+  setTimeout(tick, 400);
+}

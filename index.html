@@ -2,9 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Teng Hon</title>
+    <title>Teng Hon Lau — Software Engineer</title>
+    <meta name="description" content="Teng Hon Lau is a software engineer at Shopee working on backend systems. Projects in Rust, Java, and Ruby on Rails." />
+    <meta property="og:title" content="Teng Hon Lau — Software Engineer" />
+    <meta property="og:description" content="Software engineer at Shopee working on backend systems. Projects in Rust, Java, and Ruby on Rails." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://th-429b.github.io/" />
+    <meta property="og:image" content="https://th-429b.github.io/images/profile.jpg" />
     <link rel="shortcut icon" href="icons/wave.ico" type="image/x-icon" />
     <script>
       (function () {
@@ -13,6 +18,9 @@
         document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -65,113 +73,125 @@
       </defs>
     </svg>
 
-    <header class="header">
-      <div class="header-icons">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-          <svg class="ico-sun" aria-hidden="true"><use href="#icon-sun"/></svg>
-          <svg class="ico-moon" aria-hidden="true"><use href="#icon-moon"/></svg>
-        </button>
-        <nav class="link-dock" aria-label="Contact links">
-          <a class="link-btn" href="mailto:tenghonlau@gmail.com" target="_blank" rel="noreferrer noopener" aria-label="Email">
-            <svg aria-hidden="true"><use href="#ic-mail"/></svg>
-          </a>
-          <a class="link-btn" href="https://www.linkedin.com/in/tenghonlau/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
-            <svg aria-hidden="true"><use href="#ic-linkedin"/></svg>
-          </a>
-          <a class="link-btn" href="https://github.com/Th-429B" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
-            <svg aria-hidden="true"><use href="#ic-github"/></svg>
-          </a>
-          <a class="link-btn" href="https://drive.google.com/file/d/10vrf3E60dyzbo2sNp7_ZY2SmmUW0NmPe/view?usp=sharing" target="_blank" rel="noreferrer noopener" aria-label="Resume">
-            <svg aria-hidden="true"><use href="#ic-doc"/></svg>
-          </a>
-        </nav>
+    <header class="top-bar">
+      <div class="top-bar-inner">
+        <a class="brand" href="#about">Teng Hon Lau</a>
+        <div class="top-bar-right">
+          <nav class="top-nav" aria-label="Sections">
+            <a href="#journey">Journey</a>
+            <a href="#projects">Projects</a>
+          </nav>
+          <nav class="link-dock" aria-label="Contact links">
+            <a class="link-btn" href="mailto:tenghonlau@gmail.com" aria-label="Email">
+              <svg aria-hidden="true"><use href="#ic-mail"/></svg>
+            </a>
+            <a class="link-btn" href="https://www.linkedin.com/in/tenghonlau/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
+              <svg aria-hidden="true"><use href="#ic-linkedin"/></svg>
+            </a>
+            <a class="link-btn" href="https://github.com/Th-429B" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+              <svg aria-hidden="true"><use href="#ic-github"/></svg>
+            </a>
+            <a class="link-btn" href="https://drive.google.com/file/d/10vrf3E60dyzbo2sNp7_ZY2SmmUW0NmPe/view?usp=sharing" target="_blank" rel="noreferrer noopener" aria-label="Resume">
+              <svg aria-hidden="true"><use href="#ic-doc"/></svg>
+            </a>
+          </nav>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="ico-sun" aria-hidden="true"><use href="#icon-sun"/></svg>
+            <svg class="ico-moon" aria-hidden="true"><use href="#icon-moon"/></svg>
+          </button>
+        </div>
       </div>
     </header>
 
-    <div>
+    <main>
 
-      <nav class="nav-bar">
-        <a class="toggle-button">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </a>
-        <div class="navbar-links">
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#journey">Journey</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-          </ul>
+      <section class="hero" id="about">
+        <div class="hero-head">
+          <img src="images/profile.jpg" class="avatar" alt="Portrait of Teng Hon Lau" />
+          <div>
+            <h1>Teng Hon Lau</h1>
+            <p class="role">Software Engineer at Shopee</p>
+          </div>
         </div>
-      </nav>
 
-      <div id="about">
-        <h3 class="about-header">About</h3>
-        <div class="profile-div">
-          <img src="images/profile.jpg" class="profile-pic" alt="profile-picture" />
+        <div class="terminal">
+          <p class="term-line"><span class="term-prompt">$</span> whoami</p>
+          <p class="term-line term-output"><span id="typed">backend engineer — reliable, scalable systems</span><span class="term-cursor"></span></p>
         </div>
-        <p class="about-section">
-          Hello! I'm Teng Hon.
-          <br>
-          I'm a software engineer driven by curiosity and a desire to build things that matter.
-          <br>
-          I enjoy working on backend systems, solving complex problems, and collaborating with
-          others to create reliable, scalable products that improve user experiences.
-          <br>
-          Below are some of my projects and technical skills.
-          <br>
-          Feel free to contact me if you have any questions.
-        </p>
 
-      </div>
+        <div class="hero-about">
+          <p>
+            I'm a software engineer driven by curiosity and a habit of building.
+            I enjoy working on backend systems, untangling complex problems, and
+            shipping reliable, scalable products with good people.
+          </p>
+          <p>
+            Have a question or want to work together?
+            <a href="mailto:tenghonlau@gmail.com">Email me</a> — it's the fastest way to reach me.
+          </p>
+        </div>
+      </section>
 
-      <div class="sec_alt" id="journey">
-
-        <h2 class="project-header">Journey</h2>
-
-        <ol class="timeline">
-          <li class="milestone">
-            <span class="milestone-marker"></span>
-            <div class="milestone-card">
-              <p class="milestone-range">2020 — 2024</p>
-              <h3 class="milestone-title">University</h3>
-              <p class="milestone-org">National University of Singapore</p>
-              <p class="milestone-desc">B.Comp in Computer Science.</p>
+      <section id="journey">
+        <h2 class="section-label">Journey</h2>
+        <ol class="xp">
+          <li class="xp-row">
+            <p class="xp-dates">2024 — now</p>
+            <div>
+              <h3 class="xp-role">Software Engineer</h3>
+              <p class="xp-org">Shopee</p>
+              <p class="xp-desc">Building backend systems and scalable products.</p>
             </div>
           </li>
-
-          <li class="milestone">
-            <span class="milestone-marker"></span>
-            <div class="milestone-card">
-              <p class="milestone-range">2024 — Present</p>
-              <h3 class="milestone-title">Software Engineer</h3>
-              <p class="milestone-org">Shopee</p>
-              <p class="milestone-desc">Building backend systems and scalable products.</p>
+          <li class="xp-row">
+            <p class="xp-dates">Aug — Dec 2023</p>
+            <div>
+              <h3 class="xp-role">Teaching Assistant</h3>
+              <p class="xp-org">National University of Singapore</p>
+              <p class="xp-desc">CS3103 Computer Network Practice.</p>
+            </div>
+          </li>
+          <li class="xp-row">
+            <p class="xp-dates">May — Aug 2023</p>
+            <div>
+              <h3 class="xp-role">Software Engineer Intern</h3>
+              <p class="xp-org">Talenox</p>
+            </div>
+          </li>
+          <li class="xp-row">
+            <p class="xp-dates">May — Jul 2022</p>
+            <div>
+              <h3 class="xp-role">Software Engineer Intern</h3>
+              <p class="xp-org">Talenox</p>
+            </div>
+          </li>
+          <li class="xp-row">
+            <p class="xp-dates">2020 — 2024</p>
+            <div>
+              <h3 class="xp-role">B.Comp in Computer Science</h3>
+              <p class="xp-org">National University of Singapore</p>
             </div>
           </li>
         </ol>
+      </section>
 
-      </div>
-
-      <div class="sec" id="projects">
-
-        <h2 class="project-header">Projects</h2>
-
+      <section id="projects">
+        <h2 class="section-label">Projects</h2>
         <div class="project-list">
 
           <div class="project-row" data-open="true">
             <button class="project-trigger" aria-expanded="true">
-              <span><span class="project-index">01</span>Simplified Bitcoin Rust project</span>
+              <span class="project-name"><span class="project-index">01</span>Simplified Bitcoin client</span>
+              <span class="project-tags">Rust · CS3235</span>
               <svg class="project-chev" aria-hidden="true"><use href="#ic-chev"/></svg>
             </button>
             <div class="project-body">
               <div class="project-body-inner">
                 <div class="project-content">
-                  <img src="images/bitcoin-rust.png" class="project-thumb" alt="Simplified Bitcoin Rust project screenshot"/>
+                  <img src="images/bitcoin-rust.png" class="project-thumb" alt="Terminal output of the Bitcoin client running" />
                   <div class="project-copy">
-                    <p>Built a simplified Bitcoin client in Rust for CS3235 Software Security.</p>
-                    <p class="project-meta">Repo is private.</p>
+                    <p>A simplified Bitcoin client written in Rust for CS3235 Software Security — chain state, transaction validation, and mining against a small peer network.</p>
+                    <p class="project-meta">Repo is private (module policy).</p>
                   </div>
                 </div>
               </div>
@@ -180,16 +200,17 @@
 
           <div class="project-row">
             <button class="project-trigger" aria-expanded="false">
-              <span><span class="project-index">02</span>Python Interpreter</span>
+              <span class="project-name"><span class="project-index">02</span>Python Interpreter</span>
+              <span class="project-tags">Java · CS3213</span>
               <svg class="project-chev" aria-hidden="true"><use href="#ic-chev"/></svg>
             </button>
             <div class="project-body">
               <div class="project-body-inner">
                 <div class="project-content">
-                  <img src="images/python_interpreter.png" class="project-thumb" alt="Python Interpreter screenshot"/>
+                  <img src="images/python_interpreter.png" class="project-thumb" alt="Python Interpreter screenshot" />
                   <div class="project-copy">
-                    <p>Built a Python Interpreter in Java for an Intelligent Tutoring System, CS3213 Foundations of Software Engineering.</p>
-                    <p class="project-meta">Repo is private.</p>
+                    <p>A Python interpreter written in Java, powering an Intelligent Tutoring System for CS3213 Foundations of Software Engineering.</p>
+                    <p class="project-meta">Repo is private (module policy).</p>
                     <a class="project-link" href="https://cs3213-fse.github.io/" target="_blank" rel="noreferrer noopener">
                       <svg aria-hidden="true"><use href="#ic-external"/></svg>View site
                     </a>
@@ -201,15 +222,15 @@
 
           <div class="project-row">
             <button class="project-trigger" aria-expanded="false">
-              <span><span class="project-index">03</span>Twitter Clone</span>
+              <span class="project-name"><span class="project-index">03</span>Twitter Clone</span>
+              <span class="project-tags">Ruby on Rails</span>
               <svg class="project-chev" aria-hidden="true"><use href="#ic-chev"/></svg>
             </button>
             <div class="project-body">
               <div class="project-body-inner">
                 <div class="project-content">
-                  <img src="images/placeholder.jpg" class="project-thumb" alt="Twitter Clone screenshot"/>
                   <div class="project-copy">
-                    <p>Built using Ruby on Rails, following Michael Hartl's Ruby on Rails textbook.</p>
+                    <p>A working Twitter clone built with Ruby on Rails, following Michael Hartl's Rails tutorial end to end — auth, feeds, following, and deployment.</p>
                     <a class="project-link" href="https://github.com/Th-429B/Twitter-Clone" target="_blank" rel="noreferrer noopener">
                       <svg aria-hidden="true"><use href="#ic-github"/></svg>View repo
                     </a>
@@ -221,15 +242,15 @@
 
           <div class="project-row">
             <button class="project-trigger" aria-expanded="false">
-              <span><span class="project-index">04</span>Web Tasklist</span>
+              <span class="project-name"><span class="project-index">04</span>Web Tasklist</span>
+              <span class="project-tags">Rails · React · PostgreSQL</span>
               <svg class="project-chev" aria-hidden="true"><use href="#ic-chev"/></svg>
             </button>
             <div class="project-body">
               <div class="project-body-inner">
                 <div class="project-content">
-                  <img src="images/placeholder.jpg" class="project-thumb" alt="Web Tasklist screenshot"/>
                   <div class="project-copy">
-                    <p>Basic CRUD application built with Ruby on Rails and React, backed by PostgreSQL.</p>
+                    <p>A CRUD task manager with a Rails API backend, React frontend, and PostgreSQL storage.</p>
                     <a class="project-link" href="https://github.com/Th-429B/task-list" target="_blank" rel="noreferrer noopener">
                       <svg aria-hidden="true"><use href="#ic-github"/></svg>View repo
                     </a>
@@ -241,15 +262,16 @@
 
           <div class="project-row">
             <button class="project-trigger" aria-expanded="false">
-              <span><span class="project-index">05</span>Quack!</span>
+              <span class="project-name"><span class="project-index">05</span>Quack!</span>
+              <span class="project-tags">Hack&amp;Roll 2022</span>
               <svg class="project-chev" aria-hidden="true"><use href="#ic-chev"/></svg>
             </button>
             <div class="project-body">
               <div class="project-body-inner">
                 <div class="project-content">
-                  <img src="images/quack_demo.png" class="project-thumb" alt="Quack! screenshot"/>
+                  <img src="images/quack_demo.png" class="project-thumb" alt="Quack! game screenshot" />
                   <div class="project-copy">
-                    <p>Cookie-clicker-inspired mobile game built during Hack&amp;Roll 2022, in a single day.</p>
+                    <p>A cookie-clicker-inspired mobile game built in a single day at Hack&amp;Roll 2022.</p>
                     <a class="project-link" href="https://github.com/Th-429B/Quack" target="_blank" rel="noreferrer noopener">
                       <svg aria-hidden="true"><use href="#ic-github"/></svg>View repo
                     </a>
@@ -261,15 +283,16 @@
 
           <div class="project-row">
             <button class="project-trigger" aria-expanded="false">
-              <span><span class="project-index">06</span>Productivity Warrior</span>
+              <span class="project-name"><span class="project-index">06</span>Productivity Warrior</span>
+              <span class="project-tags">Orbital</span>
               <svg class="project-chev" aria-hidden="true"><use href="#ic-chev"/></svg>
             </button>
             <div class="project-body">
               <div class="project-body-inner">
                 <div class="project-content">
-                  <img src="images/productivity_warrior.png" class="project-thumb" alt="Productivity Warrior screenshot"/>
+                  <img src="images/productivity_warrior.png" class="project-thumb" alt="Productivity Warrior app screenshot" />
                   <div class="project-copy">
-                    <p>Mobile productivity application for students, built from scratch during Orbital (summer pairwork).</p>
+                    <p>A mobile productivity app for students, built from scratch as a pair during NUS Orbital.</p>
                     <a class="project-link" href="https://github.com/Th-429B/ProductivityWarrior" target="_blank" rel="noreferrer noopener">
                       <svg aria-hidden="true"><use href="#ic-github"/></svg>View repo
                     </a>
@@ -280,96 +303,48 @@
           </div>
 
         </div>
+      </section>
 
-      </div>
-
-      <div class="sec_alt" id="skills">
-        <h2>Skills</h2>
-        <p>
-          I have experience working with the following languages, frameworks
-          and libraries from internships, personal and school projects.
-        </p>
-        <div>
-          <ul class="skills-icons-list">
-            <li>
-              <img src="icons/java.svg"/>
-              <p class="icon-text">Java</p>
-            </li>
-            <li>
-              <img src="icons/javascript.svg" />
-              <p class="icon-text">JavaScript</p>
-            </li>
-            <li>
-              <img src="icons/ruby.svg" />
-              <p class="icon-text">Ruby</p>
-            </li>
-            <li>
-              <img src="icons/rails.svg" />
-              <p class="icon-text">Rails</p>
-            </li>
-            <li>
-              <img src="icons/python.svg" />
-              <p class="icon-text">Python</p>
-            </li>
-            <li>
-              <img src="icons/cplusplus.svg" />
-              <p class="icon-text">C++</p>
-            </li>
-
-            <li>
-              <img src="icons/react.svg" />
-              <p class="icon-text">ReactJs</p>
-            </li>
-            <li>
-              <img src="icons/angularjs.svg" />
-              <p class="icon-text">AngularJs</p>
-            </li>
-
-            <li>
-              <img src="icons/html5.svg"/>
-              <p class="icon-text">HTML</p>
-            </li>
-            <li>
-              <img src="icons/css3.svg"/>
-              <p class="icon-text">CSS</p>
-            </li>
-
-            <li>
-              <img src="icons/mysql.svg"/>
-              <p class="icon-text">mySQL</p>
-            </li>
-            <li>
-              <img src="icons/git.svg"/>
-              <p class="icon-text">Git</p>
-            </li>
+      <section id="skills">
+        <h2 class="section-label">Skills</h2>
+        <div class="skill-group">
+          <p class="skill-group-label">Languages</p>
+          <ul class="chips">
+            <li>Java</li>
+            <li>JavaScript</li>
+            <li>Ruby</li>
+            <li>Python</li>
+            <li>C++</li>
+            <li>Rust</li>
           </ul>
         </div>
-      </div>
-
-      <div>
-        <footer id="contact" class="footer">
-          <h3 class="footer-text">Connect with me</h3>
-          <ul class="footer-icon">
-            <li class="footer-icon-list">
-              <a href="mailto:tenghonlau@mail.com" target="_blank" rel="noreferrer noopener"
-                class="landing-icon-link">
-                <img src="icons/email.svg" alt="icon-email" /></a>
-            </li>
-            <li class="footer-icon-list">
-              <a href="https://www.linkedin.com/in/tenghonlau/" target="_blank" rel="noreferrer noopener"
-                class="landing-icon-link">
-                <img src="icons/linkedin.svg" alt="icon-linkedin" /></a>
-            </li>
-  
-            <li class="footer-icon-list">
-              <a href="https://github.com/Th-429B" target="_blank" rel="noreferrer noopener"
-                class="landing-icon-link">
-                <img src="icons/github-white.svg" alt="icon-github" /></a>
-            </li>
+        <div class="skill-group">
+          <p class="skill-group-label">Frameworks &amp; tools</p>
+          <ul class="chips">
+            <li>Rails</li>
+            <li>React</li>
+            <li>Angular</li>
+            <li>PostgreSQL</li>
+            <li>MySQL</li>
+            <li>Git</li>
           </ul>
-        </footer>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-inner">
+        <p class="footer-line">
+          <a href="mailto:tenghonlau@gmail.com">tenghonlau@gmail.com</a>
+          <span class="footer-sep">·</span>
+          <a href="https://github.com/Th-429B" target="_blank" rel="noreferrer noopener">GitHub</a>
+          <span class="footer-sep">·</span>
+          <a href="https://www.linkedin.com/in/tenghonlau/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+        </p>
       </div>
-    </div>
+    </footer>
+
     <script src="./script.js"></script>
   </body>
 </html>
