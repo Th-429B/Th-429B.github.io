@@ -70,6 +70,7 @@ if (typed && !prefersReducedMotion) {
     "software engineer at Shopee",
     "problem solver",
     "builder of reliable, scalable systems",
+    "coffee lover",
     "curious tinkerer",
   ];
   const TYPE_MS = 55;
