@@ -250,6 +250,9 @@ main > section {
   height: 56px;
   border-radius: 50%;
   object-fit: cover;
+  /* portrait source has the face in the upper third; anchor the square
+     crop near the top so the head isn't cut off */
+  object-position: center 10%;
   flex: none;
 }
 
