@@ -317,6 +317,41 @@ h1 {
   list-style: none;
   display: grid;
   row-gap: 1.9rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.xp::before,
+.xp::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  border-radius: 1px;
+}
+
+.xp::before {
+  bottom: 0;
+  background: var(--toggle-outline);
+}
+
+.xp::after {
+  height: var(--xp-progress, 0%);
+  background: var(--sun);
+  transition: height 0.15s linear;
+}
+
+/* rows start hidden only when JS is running (it adds .js-reveal) */
+.xp.js-reveal .xp-row {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.xp.js-reveal .xp-row.in-view {
+  opacity: 1;
+  transform: none;
 }
 
 .xp-row {
@@ -557,8 +592,14 @@ h1 {
   }
   .theme-toggle svg,
   .project-body,
-  .project-chev {
+  .project-chev,
+  .xp::after,
+  .xp.js-reveal .xp-row {
     transition: none;
+  }
+  .xp.js-reveal .xp-row {
+    opacity: 1;
+    transform: none;
   }
   .term-cursor {
     animation: none;
