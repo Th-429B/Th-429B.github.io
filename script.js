@@ -60,16 +60,42 @@ if (xp && !prefersReducedMotion) {
   updateProgress();
 }
 
-// The output line ships fully rendered in the HTML so it reads fine without
-// JS or with reduced motion; the typing effect just replays it on load.
+// Typewriter loop: the first phrase ships fully rendered in the HTML so the
+// line reads fine without JS or with reduced motion; with motion allowed, the
+// phrase is deleted and retyped, cycling through the list below.
 const typed = document.getElementById("typed");
 if (typed && !prefersReducedMotion) {
-  const full = typed.textContent;
-  typed.textContent = "";
-  let i = 0;
+  const phrases = [
+    "backend engineer",
+    "software engineer at Shopee",
+    "problem solver",
+    "builder of reliable, scalable systems",
+    "curious tinkerer",
+  ];
+  const TYPE_MS = 55;
+  const DELETE_MS = 30;
+  const HOLD_MS = 2000;
+  const GAP_MS = 350;
+
+  let phraseIdx = 0;
+  let charIdx = phrases[0].length;
+  let deleting = true;
+  typed.textContent = phrases[0];
+
   const tick = () => {
-    typed.textContent = full.slice(0, ++i);
-    if (i < full.length) setTimeout(tick, 28);
+    const current = phrases[phraseIdx];
+    charIdx += deleting ? -1 : 1;
+    typed.textContent = current.slice(0, charIdx);
+    if (deleting && charIdx === 0) {
+      deleting = false;
+      phraseIdx = (phraseIdx + 1) % phrases.length;
+      setTimeout(tick, GAP_MS);
+    } else if (!deleting && charIdx === current.length) {
+      deleting = true;
+      setTimeout(tick, HOLD_MS);
+    } else {
+      setTimeout(tick, deleting ? DELETE_MS : TYPE_MS);
+    }
   };
-  setTimeout(tick, 400);
+  setTimeout(tick, HOLD_MS);
 }
